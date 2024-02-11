@@ -23,7 +23,7 @@ class ws2812:
     def __init__(self, num_leds, pin_num, brightness):
         self.num_leds = num_leds
         self.brightness = brightness
-        self.sm = rp2.StateMachine(0, ws2812_asm, freq=8_000_000, sideset_base=Pin(pin_num))
+        self.sm = rp2.StateMachine(0, ws2812_asm, freq=8_000_000, sideset_base=Pin(pin_num, Pin.PULL_DOWN))
         self.ar = array.array("I", [0 for _ in range(self.num_leds)])
         self.sm.active(1)
 
